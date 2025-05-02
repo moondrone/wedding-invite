@@ -1,6 +1,7 @@
 import { useState } from "react";
 import TinderCard from "react-tinder-card";
 import { motion } from "framer-motion";
+import { Analytics } from "@vercel/analytics/react"
 
 export default function WeddingInvite() {
     const [decision, setDecision] = useState(null);
@@ -80,6 +81,8 @@ export default function WeddingInvite() {
                     </button>
                 </motion.div>
             )}
+            <Analytics />
+
         </div>
     );
 }
