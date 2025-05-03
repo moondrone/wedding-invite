@@ -67,20 +67,33 @@ export default function Invite() {
     if (status === 'declined') {
         return (
             <div className="text-center mt-10">
-                <h1 className="text-2xl font-bold">😢 Sorry to hear that</h1>
+                <h1 className="text-2xl font-bold">😢 Спасибо за ответ</h1>
                 <button
                     className="mt-4 bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600 transition"
                     onClick={() => forceSwipe('right')}
                 >
-                    Change your mind? Swipe right!
+                    Жаль, конечно! Придётся есть торт за вас.... и танцевать тоже!
                 </button>
             </div>
         )
     }
 
+    function getGreetingPrefix(guest) {
+        if (guest.amount && guest.amount > 1) return 'Дорогие';
+
+        switch (guest.gender.toLowerCase()) {
+            case 'male':
+                return 'Дорогой';
+            case 'female':
+                return 'Дорогая';
+            default:
+                return 'Дорогой гость';
+        }
+    }
+
     return (
         <div className="flex flex-col items-center justify-top h-screen p-4 bg-pink-50">
-            <h1 className="text-xl mb-4">Дорогие {guest.name} 💌</h1>
+            <h1 className="text-xl mb-4">{getGreetingPrefix(guest)} {guest.name} 💌</h1>
             <p className="mt-2 text-gray-600 italic text-sm">
                 Когда в мире свайпов и совпадений Tinder сказал "It’s a match", мы ещё не знали, что это — навсегда.
             </p>
@@ -91,7 +104,7 @@ export default function Invite() {
                 Но наш праздник — это не просто день регистрации, это начало новой главы в нашей жизни, и мы хотим разделить этот момент с вами!
             </p>
             <p className="mt-2 text-gray-600 italic text-sm">
-                16 мая 2025 года в 17:00 в ресторане Bacio мы будем отмечать наш союз, и будем счастливы видеть вас среди гостей. Этот день — особенный, и мы с нетерпением ждём, чтобы разделить с вами радость и теплоту!
+                16 мая 2025 года в 17:30 в ресторане Bacio мы будем отмечать наш союз, и будем счастливы видеть вас среди гостей. Этот день — особенный, и мы с нетерпением ждём, чтобы разделить с вами радость и теплоту!
             </p>
 
             <div className="w-80 h-96 relative">
@@ -112,8 +125,8 @@ export default function Invite() {
                             className="rounded-xl w-80 h-96 object-cover"
                         />
                         <h2 className="text-xl font-semibold">{guest.name}</h2>
-                        <p className="text-gray-500 mt-2 block md:hidden">Свайп вправо - придём</p>
-                        <p className="text-gray-500 mt-2 block md:hidden">Налево - не придём</p>
+                        <p className="text-gray-500 mt-2 block md:hidden">Свайп вправо - придём ❤️</p>
+                        <p className="text-gray-500 mt-2 block md:hidden">Влево - не придём 💔</p>
                     </div>
                     </div>
                 </TinderCard>
@@ -124,13 +137,13 @@ export default function Invite() {
                     onClick={() => forceSwipe('left')}
                     className="bg-gray-300 hover:bg-gray-400 text-black px-4 py-2 rounded"
                 >
-                    ❌ Придём
+                    ❌ Нет
                 </button>
                 <button
                     onClick={() => forceSwipe('right')}
                     className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
                 >
-                    ✅ Нет
+                    ✅ Придём
                 </button>
             </div>
         </div>
