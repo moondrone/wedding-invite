@@ -4,7 +4,7 @@ import TinderCard from 'react-tinder-card'
 import { supabase } from '../supabaseClient'
 
 export default function Invite() {
-    const { id } = useParams()
+    const { code } = useParams()
     const [guest, setGuest] = useState(null)
     const [status, setStatus] = useState(null)
 
@@ -13,21 +13,23 @@ export default function Invite() {
             const { data, error } = await supabase
                 .from('wedding_guests')
                 .select('*')
-                .eq('code', id)
+                .eq('code', code)
                 .single()
+            console.log('Supabase data:', data)
+            console.log('Supabase error:', error)
 
             if (data) setGuest(data)
         }
 
         fetchGuest()
-    }, [id])
+    }, [code])
 
     async function updateStatus(newStatus) {
         setStatus(newStatus)
         await supabase
             .from('guests')
             .update({ status: newStatus })
-            .eq('id', id)
+            .eq('code', code)
     }
 
     if (!guest) return <p>Loading...</p>
