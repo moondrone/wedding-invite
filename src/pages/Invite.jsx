@@ -39,11 +39,15 @@ export default function Invite() {
                 navigate(`/accepted/${code}`)
 
             } else if (direction === 'left') {
-                await supabase
-                    .from('wedding_guests')
-                    .update({ status: 'rejected' })
-                    .eq('code', code)
-                setStatus('declined')
+                if (guest.status === 'accepted') {
+                    setStatus('confused')
+                } else {
+                    await supabase
+                        .from('wedding_guests')
+                        .update({status: 'rejected'})
+                        .eq('code', code)
+                    setStatus('declined')
+                }
             }
         }, 300)
     }
@@ -77,6 +81,20 @@ export default function Invite() {
             </div>
         )
     }
+
+    if (status === 'confused') {
+        return (
+            <div className="text-center mt-10">
+                <h1 className="text-2xl font-bold">Так ДА или НЕТ?</h1>
+                <button
+                    className="mt-4 bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600 transition"
+                    onClick={() => forceSwipe('right')}
+                >Мы заметили, что ты сначала был «за», потом резко «против». Так всё-таки — ты с нами или тайно уходишь в закат?
+                    Организаторы в лёгком замешательстве и будут рады, если ты прояснишь ситуацию. Свяжись с ними, пока они не начали гадать на кофейной гуще!</button>
+            </div>
+        )
+    }
+
 
     function getGreetingPrefix(guest) {
         if (guest.amount && guest.amount > 1) return 'Дорогие';
