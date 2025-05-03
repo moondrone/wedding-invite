@@ -129,6 +129,8 @@ export default function Invite() {
                     </div>
                     </div>
                 </TinderCard>
+                <div className="h-20" />
+
             </div>
 
             <div className="fixed bottom-0 left-0 right-0 flex flex-col items-center gap-2 p-4 bg-pink-50 border-t border-gray-200">
