@@ -36,7 +36,7 @@ export default function Invite() {
 
     return (
         <div className="flex flex-col items-center justify-center h-screen p-4">
-            <h1 className="text-2xl mb-4">Hey {guest.name} 💌</h1>
+            <h1 className="text-2xl mb-4">Дорогие {guest.name} 💌</h1>
             {status === null ? (
                 <TinderCard
                     onSwipe={(dir) => {
@@ -45,6 +45,13 @@ export default function Invite() {
                     }}
                 >
                     <img src="/couple-photo.jpg" className="rounded-xl w-80 h-96 object-cover" />
+                    <div className="p-4 text-center">
+                        <h1 className="text-2xl font-bold text-pink-600">
+                            Will you celebrate with us?
+                        </h1>
+                        <p className="mt-2 text-sm text-gray-500">Swipe right to accept ❤️</p>
+                        <p className="text-sm text-gray-500">Swipe left to decline 💔</p>
+                    </div>
                 </TinderCard>
             ) : status === 'accepted' ? (
                 <p>🎉 See you at the wedding!</p>
