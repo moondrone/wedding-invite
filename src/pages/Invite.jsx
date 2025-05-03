@@ -131,21 +131,22 @@ export default function Invite() {
                 </TinderCard>
             </div>
 
-            <div className="fixed bottom-0 left-0 right-0 flex justify-center gap-6 p-4 bg-pink-50 border-t border-gray-200 hidden md:block">
-                <button
-                    onClick={() => forceSwipe('left')}
-                    className="bg-gray-300 hover:bg-gray-400 text-black px-4 py-2 rounded"
-                >
-                    ❌ Нет
-                </button>
-                <button
-                    onClick={() => forceSwipe('right')}
-                    className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
-                >
-                    ✅ Придём
-                </button>
-                <p>📝 Пожалуйста, подтвердите своё присутствие на торжестве до 5.05.2025</p>
-
+            <div className="fixed bottom-0 left-0 right-0 flex flex-col items-center gap-2 p-4 bg-pink-50 border-t border-gray-200">
+                <div className="hidden md:flex justify-center md:block">
+                    <button
+                        onClick={() => forceSwipe('left')}
+                        className="bg-gray-300 hover:bg-gray-400 text-black px-4 py-2 rounded"
+                    >
+                        ❌ Нет
+                    </button>
+                    <button
+                        onClick={() => forceSwipe('right')}
+                        className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
+                    >
+                        ✅ Придём
+                    </button>
+                </div>
+                <p className="text-center mt-2">📝 Пожалуйста, подтвердите своё присутствие на торжестве до 5.05.2025</p>
             </div>
         </div>
     )
