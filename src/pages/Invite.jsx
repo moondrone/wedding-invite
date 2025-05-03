@@ -120,11 +120,10 @@ export default function Invite() {
                     >
                     <div className="bg-white rounded-xl shadow-xl p-6 text-center h-full flex flex-col justify-center">
                         <img
-                            src="/couple-photo.jpg"
+                            src="/couple.jpeg"
                             alt="Евгений и Оксана"
                             className="rounded-xl w-80 h-96 object-cover"
                         />
-                        <h2 className="text-xl font-semibold">{guest.name}</h2>
                         <p className="text-gray-500 mt-2 block md:hidden">Свайп вправо - придём ❤️</p>
                         <p className="text-gray-500 mt-2 block md:hidden">Влево - не придём 💔</p>
                     </div>
